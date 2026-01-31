@@ -39,9 +39,9 @@ const ComingSoon: React.FC = () => {
       <div ref={sentinelRef} className="h-0 w-full" />
       <section 
         ref={sectionRef}
-        className={`relative w-full overflow-hidden sticky z-40 transition-all duration-300 ${isSticky ? 'shadow-lg' : ''}`}
+        className={`relative w-full overflow-hidden sticky z-40 transition-all duration-300 flex items-center ${isSticky ? 'shadow-lg' : ''}`}
         style={{
-          minHeight: isSticky ? '70px' : '200px',
+          height: isSticky ? '70px' : '200px',
           top: '96px',
           background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)',
         }}
@@ -54,7 +54,7 @@ const ComingSoon: React.FC = () => {
         }}
       />
       
-      <div className={`container mx-auto px-6 flex items-center relative z-10 transition-all duration-300 ${isSticky ? 'py-2 md:py-0 md:h-[70px]' : 'py-12 md:py-0 md:h-[200px]'}`}>
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="w-full flex flex-col md:flex-row items-center justify-between gap-8"
           initial={{ opacity: 0, y: 20 }}
@@ -64,11 +64,8 @@ const ComingSoon: React.FC = () => {
         >
           {/* Left side - Text */}
           <div className="text-center md:text-left">
-            <p className={`uppercase tracking-[0.2em] font-bold text-white/70 transition-all duration-300 ${isSticky ? 'text-[10px] mb-1' : 'text-xs mb-2'}`}>
-              Coming Soon
-            </p>
-            <h3 className={`font-bold text-white font-heading transition-all duration-300 ${isSticky ? 'text-lg md:text-xl lg:text-2xl' : 'text-2xl md:text-3xl lg:text-4xl'}`}>
-              Don't miss the first pour
+            <h3 className={`font-bold text-white font-heading transition-all duration-300 whitespace-nowrap ${isSticky ? 'text-lg md:text-xl lg:text-2xl' : 'text-xl md:text-2xl lg:text-3xl'}`}>
+              Don't miss the first pour, get one-time 50% OFF
             </h3>
           </div>
 

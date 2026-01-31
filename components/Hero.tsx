@@ -195,7 +195,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               <>
                 {/* Signup Text */}
                 <p className="text-white text-sm md:text-base lg:text-lg font-medium text-center px-4 md:whitespace-nowrap">
-                  Be the first to taste the future. Sign up now for 15% off your first order.
+                  Be the first to taste the future. Sign up now for 50% off your first order.
                 </p>
                 
                 {/* Email Form */}

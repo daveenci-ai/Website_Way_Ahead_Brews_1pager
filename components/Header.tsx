@@ -39,6 +39,34 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToStory = () => {
+    // Navigate to home first if not already there
+    if (currentPage !== 'home') {
+      onNavigate('home');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const scrollToProcess = () => {
+    // Navigate to home first if not already there
+    if (currentPage !== 'home') {
+      onNavigate('home');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-[#005a31] backdrop-blur-xl border-b border-white/10 overflow-hidden">
@@ -52,30 +80,28 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
             mixBlendMode: 'overlay'
           }}
         />
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center relative z-10">
+        <div className="container mx-auto px-4 py-2 flex justify-between items-center relative z-10">
           {/* Logo */}
           <button 
             onClick={() => handleNav('home')} 
-            className="flex items-center group outline-none"
+            className="flex items-center group outline-none -ml-1"
           >
             <img 
               src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png" 
               alt="Way Ahead Logo" 
-              width="180"
-              height="48"
+              width="320"
+              height="88"
               /* @ts-ignore - fetchpriority is a valid experimental attribute */
               fetchpriority="high"
               decoding="async"
-              className="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" 
+              className="h-20 md:h-[88px] w-auto transition-transform group-hover:scale-105" 
             />
           </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
-            <NavLink active={currentPage === 'home'} onClick={() => handleNav('home')}>Home</NavLink>
-            <NavLink active={currentPage === 'story'} onClick={() => handleNav('story')}>Our Story</NavLink>
-            <NavLink active={currentPage === 'process'} onClick={() => handleNav('process')}>Our Process</NavLink>
-            <NavLink active={currentPage === 'shop'} onClick={() => handleNav('shop')}>Shop</NavLink>
+            <NavLink active={false} onClick={scrollToStory}>Our Story</NavLink>
+            <NavLink active={false} onClick={scrollToProcess}>Our Process</NavLink>
           </nav>
 
           {/* Actions */}
@@ -122,28 +148,16 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
           >
             <nav className="flex flex-col gap-10 items-center text-center">
               <button 
-                onClick={() => handleNav('home')} 
-                className={`text-4xl font-bold tracking-tight ${currentPage === 'home' ? 'text-[#ec1c24]' : 'text-white'}`}
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => handleNav('story')} 
-                className={`text-4xl font-bold tracking-tight ${currentPage === 'story' ? 'text-[#ec1c24]' : 'text-white'}`}
+                onClick={scrollToStory} 
+                className="text-4xl font-bold tracking-tight text-white"
               >
                 Our Story
               </button>
               <button 
-                onClick={() => handleNav('process')} 
-                className={`text-4xl font-bold tracking-tight ${currentPage === 'process' ? 'text-[#ec1c24]' : 'text-white'}`}
+                onClick={scrollToProcess} 
+                className="text-4xl font-bold tracking-tight text-white"
               >
                 Our Process
-              </button>
-              <button 
-                onClick={() => handleNav('shop')} 
-                className={`text-4xl font-bold tracking-tight ${currentPage === 'shop' ? 'text-[#ec1c24]' : 'text-white'}`}
-              >
-                Shop
               </button>
             </nav>
             

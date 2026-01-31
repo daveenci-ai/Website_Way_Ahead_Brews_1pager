@@ -1,18 +1,25 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 interface HeroProps {
-  onShopClick: () => void;
   onStoryClick?: () => void;
 }
 
-// Rotating text phrases - defined outside component for stability
-const ROTATING_PHRASES = ["Flavorfully", "Look ahead,", "Think ahead, drink"];
-
-const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
+const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
   const targetRef = useRef<HTMLDivElement>(null);
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      console.log('Email submitted:', email);
+      setEmail('');
+      setIsSubmitted(true);
+    }
+  };
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end start"],
@@ -22,17 +29,6 @@ const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
   const yText = useTransform(scrollYProgress, [0, 1], [0, 50]);
   // Parallax effect for background - moves slower
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
-  // Rotating text state
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % ROTATING_PHRASES.length);
-    }, 4000); // Change phrase every 4 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section 
@@ -49,14 +45,10 @@ const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
         paddingBottom: '0px'
       }}
     >
-      {/* Background Image - Full Bleed with Parallax */}
+      {/* Background Video - Full Bleed */}
       <motion.div 
-        className="absolute z-0 pointer-events-none"
+        className="absolute z-0 pointer-events-none overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/pictures/5.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 25%',
-          backgroundRepeat: 'no-repeat',
           width: '100vw',
           height: 'calc(100vh + 2cm)',
           minHeight: 'calc(100vh + 2cm)',
@@ -66,7 +58,18 @@ const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
           bottom: 0,
           y: backgroundY
         }}
-      />
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute w-full h-full object-cover"
+          style={{ objectPosition: 'center 25%' }}
+        >
+          <source src="/images/videos/replicate-prediction-fmpe9mp71xrmw0cw2jmvpj7xxc.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
       {/* Black Overlay - 10% Transparency */}
       <div 
         className="absolute z-0 pointer-events-none"
@@ -140,23 +143,15 @@ const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
 
           {/* --- BIG HEADLINE --- */}
           <div className="flex flex-col items-center">
-            {/* Line 1 - Rotating Text */}
-            <div className="relative flex items-center justify-center" style={{ height: '1.2em', minHeight: '1.2em', width: '100%' }}>
-              {ROTATING_PHRASES.map((phrase, index) => (
-                <span
-                  key={index}
-                  className="block text-white text-4xl md:text-7xl lg:text-8xl font-heading font-bold tracking-tight absolute whitespace-nowrap transition-all duration-500 ease-in-out"
-                  style={{ 
-                    left: '50%',
-                    transform: `translateX(-50%) translateY(${currentPhraseIndex === index ? 0 : 20}px)`,
-                    opacity: currentPhraseIndex === index ? 1 : 0,
-                    pointerEvents: currentPhraseIndex === index ? 'auto' : 'none'
-                  }}
-                >
-                  {phrase}
-                </span>
-              ))}
-            </div>
+            {/* Line 1 - Static Text */}
+            <motion.span
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="block text-white text-3xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight"
+            >
+              WE ARE BREWING
+            </motion.span>
             {/* Line 2 - Wordmark */}
             <motion.div
               initial={{ y: 50, opacity: 0 }}
@@ -175,26 +170,61 @@ const Hero: React.FC<HeroProps> = ({ onShopClick, onStoryClick }) => {
             </motion.div>
           </div>
 
-          {/* --- CTAs --- */}
+          {/* --- EMAIL SIGNUP --- */}
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col md:flex-row gap-4 justify-center items-center relative z-30"
+            className="flex flex-col gap-4 justify-center items-center relative z-30 w-full max-w-xl mx-auto"
             style={{ marginTop: '-1cm' }}
           >
-            <button 
-              onClick={onShopClick}
-              className="group relative px-10 py-5 bg-[#ec1c24] text-white font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_-10px_rgba(236,28,36,0.6)]"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Shop the Collection <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
+            {isSubmitted ? (
+              /* Success Message */
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="flex flex-col items-center gap-2 px-8 py-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30"
+              >
+                <span className="text-3xl">🍻</span>
+                <p className="text-white text-lg md:text-xl font-bold text-center">
+                  Cheers! Check your inbox for your discount code.
+                </p>
+              </motion.div>
+            ) : (
+              <>
+                {/* Signup Text */}
+                <p className="text-white text-sm md:text-base lg:text-lg font-medium text-center px-4 md:whitespace-nowrap">
+                  Be the first to taste the future. Sign up now for 15% off your first order.
+                </p>
+                
+                {/* Email Form */}
+                <form 
+                  onSubmit={handleSubmit}
+                  className="flex flex-col md:flex-row gap-3 w-full px-4"
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    className="flex-1 px-6 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/25 transition-all"
+                  />
+                  <button 
+                    type="submit"
+                    className="px-8 py-4 bg-[#ec1c24] text-white font-bold text-base rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_-10px_rgba(236,28,36,0.6)] whitespace-nowrap"
+                  >
+                    Get My Voucher
+                  </button>
+                </form>
+              </>
+            )}
             
+            {/* Read our story link */}
             <button 
               onClick={onStoryClick}
-              className="text-white/70 hover:text-white font-medium border-b border-transparent hover:border-[#d4af37] transition-colors"
+              className="text-white/70 hover:text-white font-medium border-b border-transparent hover:border-[#d4af37] transition-colors mt-2"
             >
               Read our story
             </button>

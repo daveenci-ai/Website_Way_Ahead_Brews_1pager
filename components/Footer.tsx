@@ -37,10 +37,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         The future of flavor is here. No compromises, no headaches, just pure excellence in every can.
                     </p>
                     <nav className="flex gap-8 mb-10">
-                      <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-white transition-colors">Home</button>
-                      <button onClick={() => onNavigate('story')} className="text-slate-400 hover:text-white transition-colors">Our Story</button>
-                      <button onClick={() => onNavigate('process')} className="text-slate-400 hover:text-white transition-colors">Our Process</button>
-                      <button onClick={() => onNavigate('shop')} className="text-slate-400 hover:text-white transition-colors">Shop</button>
+                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-white transition-colors">Our Story</button>
+                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-white transition-colors">Our Process</button>
                     </nav>
                     <div className="flex space-x-6">
                         <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter /></a>

@@ -77,40 +77,42 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
             mixBlendMode: 'overlay'
           }}
         />
-        <div className="container mx-auto px-4 py-2 flex justify-between items-center relative z-10">
-          {/* Logo */}
-          <button 
-            onClick={() => handleNav('home')} 
-            className="flex items-center group outline-none -ml-1"
-          >
-            <img 
-              src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png" 
-              alt="Way Ahead Logo" 
-              width="320"
-              height="88"
-              /* @ts-ignore - fetchpriority is a valid experimental attribute */
-              fetchpriority="high"
-              decoding="async"
-              className="h-20 md:h-[88px] w-auto transition-transform group-hover:scale-105" 
-            />
-          </button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
-            <NavLink active={false} onClick={scrollToStory}>Our Story</NavLink>
-            <NavLink active={false} onClick={scrollToProcess}>Our Process</NavLink>
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-2 md:gap-4">
-            {/* Mobile Menu Toggle (Sandwich Bar) */}
+        <div className="container mx-auto px-4 py-2 relative z-10">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
             <button 
-              className="md:hidden text-white p-2 hover:text-[#ec1c24] transition-colors outline-none"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              onClick={() => handleNav('home')} 
+              className="flex items-center group outline-none -ml-1"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              <img 
+                src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png" 
+                alt="Way Ahead Logo" 
+                width="320"
+                height="88"
+                /* @ts-ignore - fetchpriority is a valid experimental attribute */
+                fetchpriority="high"
+                decoding="async"
+                className="h-20 md:h-[88px] w-auto transition-transform group-hover:scale-105" 
+              />
             </button>
+
+            {/* Desktop Navigation - Centered */}
+            <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+              <NavLink active={false} onClick={scrollToStory}>Our Story</NavLink>
+              <NavLink active={false} onClick={scrollToProcess}>Our Process</NavLink>
+            </nav>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 md:gap-4">
+              {/* Mobile Menu Toggle (Sandwich Bar) */}
+              <button 
+                className="md:hidden text-white p-2 hover:text-[#ec1c24] transition-colors outline-none"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>

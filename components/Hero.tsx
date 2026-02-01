@@ -67,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
           className="absolute w-full h-full object-cover"
           style={{ objectPosition: 'center 25%' }}
         >
-          <source src="/images/videos/replicate-prediction-fmpe9mp71xrmw0cw2jmvpj7xxc.mp4" type="video/mp4" />
+          <source src="/images/videos/replicate-prediction-q5pgarrqx5rmt0cw2k1rb05jvc.mp4" type="video/mp4" />
         </video>
       </motion.div>
       {/* Black Overlay - 10% Transparency */}
@@ -134,10 +134,10 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-[#f5dd12] text-sm font-medium tracking-wider uppercase"
-            style={{ marginTop: 'calc(-2rem - 3cm)', marginBottom: 'calc(1rem + 1cm)' }}
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-md border-2 border-[#b8862e] text-[#005a31] text-base md:text-lg font-medium tracking-wider uppercase shadow-lg shadow-black/20"
+            style={{ marginTop: 'calc(-2rem - 3cm)', marginBottom: 'calc(1rem + 1cm)', background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)' }}
           >
-            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-5 h-5 fill-[#ec1c24] text-[#ec1c24]" />
             The Molecular Carbonation Standard
           </motion.div>
 
@@ -192,16 +192,16 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
                 </p>
               </motion.div>
             ) : (
-              <>
+              <div className="backdrop-blur-sm rounded-3xl p-6 md:p-8">
                 {/* Signup Text */}
-                <p className="text-white text-sm md:text-base lg:text-lg font-medium text-center px-4 md:whitespace-nowrap">
+                <p className="text-white text-base md:text-lg lg:text-xl font-bold text-center mb-6 md:whitespace-nowrap drop-shadow-lg">
                   Be the first to taste the future. Sign up now for 50% off your first order.
                 </p>
                 
                 {/* Email Form */}
                 <form 
                   onSubmit={handleSubmit}
-                  className="flex flex-col md:flex-row gap-3 w-full px-4"
+                  className="flex flex-col md:flex-row gap-3 w-full"
                 >
                   <input
                     type="email"
@@ -209,22 +209,22 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="flex-1 px-6 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/25 transition-all"
+                    className="flex-1 px-6 py-4 rounded-full bg-white text-slate-900 placeholder-slate-500 font-medium focus:outline-none focus:ring-4 focus:ring-[#f5dd12]/50 transition-all text-base shadow-lg"
                   />
                   <button 
                     type="submit"
-                    className="px-8 py-4 bg-[#ec1c24] text-white font-bold text-base rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_-10px_rgba(236,28,36,0.6)] whitespace-nowrap"
+                    className="px-10 py-4 bg-[#ec1c24] text-white font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl whitespace-nowrap"
                   >
                     Get My Voucher
                   </button>
                 </form>
-              </>
+              </div>
             )}
             
             {/* Read our story link */}
             <button 
               onClick={onStoryClick}
-              className="text-white/70 hover:text-white font-medium border-b border-transparent hover:border-[#d4af37] transition-colors mt-2"
+              className="text-white hover:text-[#f5dd12] font-bold text-lg border-b-2 border-white/50 hover:border-[#f5dd12] transition-colors mt-4"
             >
               Read our story
             </button>

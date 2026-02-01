@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Star } from 'lucide-react';
 
@@ -11,6 +11,16 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showStickyForm, setShowStickyForm] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sticky form when scrolled past the hero section (approx 90% of viewport height)
+      setShowStickyForm(window.scrollY > window.innerHeight * 0.85);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,31 +43,18 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
   return (
     <section 
       ref={targetRef}
-      className="relative flex flex-col items-center justify-center overflow-hidden"
+      className="relative flex flex-col items-center justify-start w-screen pt-28 md:pt-32"
       style={{
-        width: '100vw',
-        height: 'calc(100vh + 2cm)',
-        minHeight: 'calc(100vh + 2cm)',
-        maxHeight: 'calc(100vh + 2cm)',
         marginLeft: 'calc(50% - 50vw)',
         marginRight: 'calc(50% - 50vw)',
-        paddingTop: '80px',
-        paddingBottom: '0px'
+        height: 'calc(100dvh + 1.5cm)',
+        minHeight: 'calc(100dvh + 1.5cm)'
       }}
     >
       {/* Background Video - Full Bleed */}
       <motion.div 
-        className="absolute z-0 pointer-events-none overflow-hidden"
-        style={{
-          width: '100vw',
-          height: 'calc(100vh + 2cm)',
-          minHeight: 'calc(100vh + 2cm)',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          y: backgroundY
-        }}
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden w-screen"
+        style={{ y: backgroundY, height: 'calc(100dvh + 1.5cm)' }}
       >
         <video
           autoPlay
@@ -72,26 +69,15 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
       </motion.div>
       {/* Black Overlay - 10% Transparency */}
       <div 
-        className="absolute z-0 pointer-events-none"
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          width: '100vw',
-          height: 'calc(100vh + 2cm)',
-          top: 0,
-          left: 0,
-          right: 0
-        }}
+        className="absolute inset-0 z-0 pointer-events-none w-screen bg-black/10"
+        style={{ height: 'calc(100dvh + 1.5cm)' }}
       />
       {/* Background Gradient Overlay - Minimal Vignette */}
       <div 
-        className="absolute z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none w-screen"
         style={{
-          background: 'radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.2) 50%, rgba(2, 6, 23, 0.4) 100%)',
-          width: '100vw',
-          height: 'calc(100vh + 2cm)',
-          top: 0,
-          left: 0,
-          right: 0
+          height: 'calc(100dvh + 1.5cm)',
+          background: 'radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.2) 50%, rgba(2, 6, 23, 0.4) 100%)'
         }}
       />
       {/* Smooth Transition Gradient at Bottom */}
@@ -108,7 +94,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
       />
 
       {/* Content Container - Centered with max-width */}
-      <div className="container mx-auto px-4 z-10 relative flex flex-col items-center text-center w-full" style={{ marginTop: '-1cm' }}>
+      <div className="container mx-auto px-4 z-10 relative flex flex-col items-center text-center w-full pt-4 md:pt-8">
         
         {/* --- 0% ALCOHOL BADGE --- */}
         <motion.div
@@ -127,17 +113,17 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
           </div>
         </motion.div>
 
-        {/* --- TEXT CONTENT --- */}
-        <motion.div style={{ opacity: opacityText, y: yText }} className="max-w-6xl mx-auto space-y-6 md:space-y-8">
+        {/* --- TEXT CONTENT (fades on scroll) --- */}
+        <motion.div style={{ opacity: opacityText, y: yText }} className="max-w-6xl mx-auto space-y-2 md:space-y-4">
           
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-md border-2 border-[#b8862e] text-[#005a31] text-base md:text-lg font-medium tracking-wider uppercase shadow-lg shadow-black/20"
-            style={{ marginTop: 'calc(-2rem - 3cm)', marginBottom: 'calc(1rem + 1cm)', background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)' }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border-2 border-[#b8862e] text-[#005a31] text-sm md:text-base font-medium tracking-wider uppercase shadow-lg shadow-black/20 mb-4"
+            style={{ background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)' }}
           >
-            <Star className="w-5 h-5 fill-[#ec1c24] text-[#ec1c24]" />
+            <Star className="w-4 h-4 fill-[#ec1c24] text-[#ec1c24]" />
             The Molecular Carbonation Standard
           </motion.div>
 
@@ -157,80 +143,104 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="block"
-              style={{ marginTop: '-1.5cm' }}
+              className="block -mt-4 md:-mt-8"
             >
               <img 
                 src="/images/wordmark/WayAhead-Wordmark-WA-RGB-Red-260115-v01ccr.png"
                 alt="Way Ahead"
-                className="h-40 md:h-64 lg:h-80 xl:h-96 w-auto object-contain"
+                className="h-40 md:h-56 lg:h-80 xl:h-96 w-auto object-contain"
                 loading="eager"
                 decoding="async"
               />
             </motion.div>
           </div>
+        </motion.div>
 
-          {/* --- EMAIL SIGNUP --- */}
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col gap-4 justify-center items-center relative z-30 w-full max-w-xl mx-auto"
-            style={{ marginTop: '-1cm' }}
-          >
-            {isSubmitted ? (
-              /* Success Message */
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className="flex flex-col items-center gap-2 px-8 py-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30"
-              >
-                <span className="text-3xl">🍻</span>
-                <p className="text-white text-lg md:text-xl font-bold text-center">
-                  Cheers! Check your inbox for your discount code.
-                </p>
-              </motion.div>
-            ) : (
-              <div className="backdrop-blur-sm rounded-3xl p-6 md:p-8">
-                {/* Signup Text */}
-                <p className="text-white text-base md:text-lg lg:text-xl font-bold text-center mb-6 md:whitespace-nowrap drop-shadow-lg">
-                  Be the first to taste the future. Sign up now for 50% off your first order.
-                </p>
-                
-                {/* Email Form */}
-                <form 
-                  onSubmit={handleSubmit}
-                  className="flex flex-col md:flex-row gap-3 w-full"
-                >
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="flex-1 px-6 py-4 rounded-full bg-white text-slate-900 placeholder-slate-500 font-medium focus:outline-none focus:ring-4 focus:ring-[#f5dd12]/50 transition-all text-base shadow-lg"
-                  />
-                  <button 
-                    type="submit"
-                    className="px-10 py-4 bg-[#ec1c24] text-white font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl whitespace-nowrap"
-                  >
-                    Get My Voucher
-                  </button>
-                </form>
-              </div>
-            )}
-            
-            {/* Read our story link */}
-            <button 
-              onClick={onStoryClick}
-              className="text-white hover:text-[#f5dd12] font-bold text-lg border-b-2 border-white/50 hover:border-[#f5dd12] transition-colors mt-4"
+        {/* --- EMAIL SIGNUP (in hero) --- */}
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col gap-4 justify-center items-center w-full max-w-xl mx-auto -mt-12 md:-mt-16 z-30"
+        >
+          {isSubmitted ? (
+            /* Success Message */
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center gap-2 px-8 py-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30"
             >
-              Read our story
-            </button>
-          </motion.div>
+              <span className="text-3xl">🍻</span>
+              <p className="text-white text-lg md:text-xl font-bold text-center">
+                Cheers! Check your inbox for your discount code.
+              </p>
+            </motion.div>
+          ) : (
+            <div className="backdrop-blur-sm rounded-3xl" style={{ padding: '5px' }}>
+              {/* Signup Text */}
+              <p className="text-white text-base md:text-lg lg:text-xl font-bold text-center mb-4 md:whitespace-nowrap drop-shadow-lg">
+                Be the first to taste the future. Sign up now for 50% off your first order.
+              </p>
+              
+              {/* Email Form */}
+              <form 
+                onSubmit={handleSubmit}
+                className="flex flex-col md:flex-row gap-3 w-full"
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 px-6 py-4 rounded-full bg-white text-slate-900 placeholder-slate-500 font-medium focus:outline-none focus:ring-4 focus:ring-[#f5dd12]/50 transition-all text-base shadow-lg"
+                />
+                <button 
+                  type="submit"
+                  className="px-10 py-4 bg-[#ec1c24] text-white font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl whitespace-nowrap"
+                >
+                  Get My Voucher
+                </button>
+              </form>
+            </div>
+          )}
         </motion.div>
       </div>
+
+      {/* --- FIXED EMAIL SIGNUP (shows when scrolling) --- */}
+      {showStickyForm && !isSubmitted && (
+        <div className="fixed top-[96px] left-0 right-0 z-40 flex justify-center px-4">
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="backdrop-blur-md bg-[#005a31]/95 rounded-2xl shadow-xl py-3 px-4 md:px-6 max-w-2xl w-full"
+          >
+            <form 
+              onSubmit={handleSubmit}
+              className="flex flex-col md:flex-row gap-2 md:gap-3 items-center"
+            >
+              <p className="text-white text-sm md:text-base font-bold whitespace-nowrap hidden lg:block">
+                50% off your first order
+              </p>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                className="flex-1 px-4 py-2 rounded-full bg-white text-slate-900 placeholder-slate-500 font-medium focus:outline-none focus:ring-2 focus:ring-[#f5dd12]/50 transition-all text-sm shadow-lg w-full md:w-auto"
+              />
+              <button 
+                type="submit"
+                className="px-6 py-2 bg-[#ec1c24] text-white font-bold text-sm rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg whitespace-nowrap"
+              >
+                Get My Voucher
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }

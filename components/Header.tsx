@@ -64,6 +64,20 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToContact = () => {
+    // Navigate to home first if not already there
+    if (currentPage !== 'home') {
+      onNavigate('home');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-[#005a31] backdrop-blur-xl border-b border-white/10 overflow-hidden">
@@ -100,6 +114,7 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
             <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
               <NavLink active={false} onClick={scrollToStory}>Our Story</NavLink>
               <NavLink active={false} onClick={scrollToProcess}>Our Process</NavLink>
+              <NavLink active={false} onClick={scrollToContact}>Contact Us</NavLink>
             </nav>
 
             {/* Actions */}
@@ -139,6 +154,12 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
                 className="text-4xl font-bold tracking-tight text-white"
               >
                 Our Process
+              </button>
+              <button 
+                onClick={scrollToContact} 
+                className="text-4xl font-bold tracking-tight text-white"
+              >
+                Contact Us
               </button>
             </nav>
             

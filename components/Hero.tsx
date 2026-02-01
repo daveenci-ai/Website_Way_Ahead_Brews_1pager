@@ -61,6 +61,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute w-full h-full object-cover"
           style={{ objectPosition: 'center 25%' }}
         >

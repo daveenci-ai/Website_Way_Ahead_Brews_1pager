@@ -1,9 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, Menu, X } from 'lucide-react';
-import { useCart } from '../context/CartContext.tsx';
-import Cart from './Cart.tsx';
+import { Menu, X } from 'lucide-react';
 import { Page } from '../App.tsx';
 
 interface NavLinkProps {
@@ -31,7 +29,6 @@ const NavLink: React.FC<NavLinkProps> = ({ active, onClick, children }) => {
 };
 
 const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> = ({ currentPage, onNavigate }) => {
-  const { cartCount, isCartOpen, setIsCartOpen } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNav = (page: Page) => {
@@ -106,24 +103,6 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
 
           {/* Actions */}
           <div className="flex items-center gap-2 md:gap-4">
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="relative text-white hover:text-[#ec1c24] transition-colors p-2 outline-none"
-              aria-label="Open cart"
-            >
-              <ShoppingCart size={24} />
-              {cartCount > 0 && (
-                <motion.span
-                  className="absolute top-0 right-0 bg-[#ec1c24] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                >
-                  {cartCount}
-                </motion.span>
-              )}
-            </button>
-
             {/* Mobile Menu Toggle (Sandwich Bar) */}
             <button 
               className="md:hidden text-white p-2 hover:text-[#ec1c24] transition-colors outline-none"
@@ -171,7 +150,6 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
         )}
       </AnimatePresence>
 
-      <Cart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
     </>
   );
 };

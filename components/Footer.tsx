@@ -33,17 +33,17 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                           className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105" 
                         />
                     </button>
-                    <p className="max-w-md text-slate-400 leading-relaxed mb-8">
+                    <p className="max-w-md text-white leading-relaxed mb-8">
                         The future of flavor is here. No compromises, no headaches, just pure excellence in every can.
                     </p>
                     <nav className="flex gap-8 mb-10">
-                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-white transition-colors">Our Story</button>
-                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-white transition-colors">Our Process</button>
+                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-white hover:text-white/70 transition-colors">Our Story</button>
+                      <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-white hover:text-white/70 transition-colors">Our Process</button>
                     </nav>
                     <div className="flex space-x-6">
-                        <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter /></a>
-                        <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram /></a>
-                        <a href="#" className="text-slate-400 hover:text-white transition-colors"><Github /></a>
+                        <a href="#" className="text-white hover:text-white/70 transition-colors"><Twitter /></a>
+                        <a href="#" className="text-white hover:text-white/70 transition-colors"><Instagram /></a>
+                        <a href="#" className="text-white hover:text-white/70 transition-colors"><Github /></a>
                     </div>
                 </div>
                 <div className="mt-12 border-t border-white/10 pt-8 text-center text-white/60 text-sm">

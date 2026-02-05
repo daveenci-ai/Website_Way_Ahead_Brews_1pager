@@ -67,7 +67,7 @@ const Commitment: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-none mb-8"
           >
             Committed to the <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ec1c24] to-rose-400">Future of Brewing.</span>
@@ -98,7 +98,7 @@ const Commitment: React.FC = () => {
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ec1c24] to-rose-600 flex items-center justify-center mb-8 shadow-lg shadow-[#ec1c24]/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                 <pillar.icon className="text-white w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#ec1c24] transition-colors">{pillar.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#ec1c24] transition-colors">{pillar.title}</h3>
               <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
                 {pillar.desc}
               </p>

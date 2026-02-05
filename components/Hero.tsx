@@ -1,7 +1,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Star } from 'lucide-react';
 
 interface HeroProps {
   onStoryClick?: () => void;
@@ -68,17 +67,12 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
           <source src="/images/videos/replicate-prediction-q5pgarrqx5rmt0cw2k1rb05jvc.mp4" type="video/mp4" />
         </video>
       </motion.div>
-      {/* Black Overlay - 10% Transparency */}
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none w-screen bg-black/10"
-        style={{ height: 'calc(100dvh + 1.5cm)' }}
-      />
-      {/* Background Gradient Overlay - Minimal Vignette */}
+      {/* Background Gradient Overlay - Very Light Vignette */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none w-screen"
         style={{
           height: 'calc(100dvh + 1.5cm)',
-          background: 'radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.2) 50%, rgba(2, 6, 23, 0.4) 100%)'
+          background: 'radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.05) 60%, rgba(2, 6, 23, 0.15) 100%)'
         }}
       />
       {/* Smooth Transition Gradient at Bottom */}
@@ -97,61 +91,32 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
       {/* Content Container - Centered with max-width */}
       <div className="container mx-auto px-4 z-10 relative flex flex-col items-center text-center w-full pt-4 md:pt-8">
         
-        {/* --- 0% ALCOHOL BADGE --- */}
-        <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", duration: 1.5, bounce: 0.5 }}
-          className="absolute top-[-20px] right-2 md:right-[5%] md:top-10 z-20"
-        >
-          <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-[#ec1c24] rounded-full text-white font-bold shadow-lg shadow-[#ec1c24]/50">
-            <div className="absolute inset-0 border-2 border-dashed border-white/50 rounded-full animate-[spin_10s_linear_infinite]" />
-            <div className="flex flex-col items-center leading-none">
-              <span className="text-2xl md:text-4xl font-heading">0%</span>
-              <span className="text-[10px] md:text-xs uppercase tracking-widest mt-1">Alcohol</span>
-              <span className="text-[8px] md:text-[10px] opacity-80">100% Taste</span>
-            </div>
-          </div>
-        </motion.div>
-
         {/* --- TEXT CONTENT (fades on scroll) --- */}
         <motion.div style={{ opacity: opacityText, y: yText }} className="max-w-6xl mx-auto space-y-2 md:space-y-4">
           
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border-2 border-[#b8862e] text-[#005a31] text-sm md:text-base font-medium tracking-wider uppercase shadow-lg shadow-black/20 mb-4"
-            style={{ background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)' }}
-          >
-            <Star className="w-4 h-4 fill-[#ec1c24] text-[#ec1c24]" />
-            The Molecular Carbonation Standard
-          </motion.div>
-
           {/* --- BIG HEADLINE --- */}
           <div className="flex flex-col items-center">
             {/* Line 1 - Static Text */}
             <motion.span
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="block text-white text-3xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight"
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="block text-white text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight mb-4"
             >
-              WE ARE BREWING
+              COMING SOON
             </motion.span>
-            {/* Line 2 - Wordmark */}
+            {/* Line 2 - Logo */}
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="block -mt-4 md:-mt-8"
+              transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+              className="block"
             >
               <img 
-                src="/images/wordmark/WayAhead-Wordmark-WA-RGB-Red-260115-v01ccr.png"
-                alt="Way Ahead"
-                className="h-40 md:h-56 lg:h-80 xl:h-96 w-auto object-contain"
+                src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png"
+                alt="Way Ahead Brews Logo"
+                className="h-48 md:h-64 lg:h-80 w-auto object-contain"
                 loading="eager"
-                decoding="async"
               />
             </motion.div>
           </div>
@@ -162,7 +127,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="flex flex-col gap-4 justify-center items-center w-full max-w-xl mx-auto -mt-12 md:-mt-16 z-30"
+          className="flex flex-col gap-4 justify-center items-center w-full max-w-xl mx-auto mt-8 md:mt-10 z-30"
         >
           {isSubmitted ? (
             /* Success Message */

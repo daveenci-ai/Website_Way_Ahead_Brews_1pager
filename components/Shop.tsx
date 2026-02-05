@@ -28,7 +28,7 @@ const Shop: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-16">
             <motion.h2 
-                className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

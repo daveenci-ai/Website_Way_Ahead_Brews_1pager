@@ -12,7 +12,7 @@ const processSteps = [
 
 const Process: React.FC = () => {
     return (
-        <section id="process" className="py-24 md:py-32 bg-slate-950 overflow-hidden scroll-mt-[180px]">
+        <section id="process" className="py-24 md:py-32 bg-[#fdf9eb] overflow-hidden scroll-mt-[180px]">
             <div className="container mx-auto px-6">
                 
                 {/* Header */}
@@ -21,13 +21,13 @@ const Process: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ec1c24]/10 border border-[#ec1c24]/20 text-[#ec1c24] text-sm font-medium tracking-wider uppercase mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#005a31]/10 border border-[#005a31]/20 text-[#005a31] text-sm font-medium tracking-wider uppercase mb-6"
                     >
                         <Sparkles className="w-4 h-4" />
                         Revolutionary Process
                     </motion.div>
                     <motion.h2 
-                        className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight"
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#005a31] tracking-tight"
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -41,16 +41,19 @@ const Process: React.FC = () => {
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                         {/* The Old Way */}
                         <motion.div 
-                            className="relative p-8 md:p-10 rounded-3xl bg-slate-800 border border-slate-700"
+                            className="relative p-8 md:p-10 rounded-3xl bg-[#f8b0b2] border-2 border-[#ec1c24]/30"
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <div className="absolute -top-3 left-8 px-4 py-1 bg-slate-600 rounded-full text-xs font-bold uppercase tracking-wider text-slate-200">
+                            <div 
+                                className="absolute -top-3 left-8 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#005a31]"
+                                style={{ background: 'linear-gradient(135deg, #f5dd12 0%, #d4a84b 50%, #f5dd12 100%)' }}
+                            >
                                 The Old Way
                             </div>
-                            <p className="text-slate-300 leading-relaxed mt-4">
-                                Traditional NA beers use <span className="text-white font-semibold">heat extraction</span> or <span className="text-white font-semibold">controlled fermentation</span> — processes that strip away flavor and limit shelf life.
+                            <p className="text-[#005a31] leading-relaxed mt-4">
+                                Traditional NA beers use <span className="text-[#005a31] font-semibold">heat extraction</span> or <span className="text-[#005a31] font-semibold">controlled fermentation</span> — processes that strip away flavor and limit shelf life.
                             </p>
                             <p className="text-[#ec1c24] font-semibold mt-4">
                                 The result? Beer that doesn't taste like beer.
@@ -59,18 +62,21 @@ const Process: React.FC = () => {
 
                         {/* The Way Ahead */}
                         <motion.div 
-                            className="relative p-8 md:p-10 rounded-3xl bg-[#ec1c24] border border-[#ec1c24]"
+                            className="relative p-8 md:p-10 rounded-3xl bg-[#005a31] border-2 border-[#005a31]"
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <div className="absolute -top-3 left-8 px-4 py-1 bg-white rounded-full text-xs font-bold uppercase tracking-wider text-[#ec1c24]">
+                            <div 
+                                className="absolute -top-3 left-8 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#005a31]"
+                                style={{ background: 'linear-gradient(135deg, #f5dd12 0%, #d4a84b 50%, #f5dd12 100%)' }}
+                            >
                                 The Way Ahead
                             </div>
-                            <p className="text-white leading-relaxed mt-4">
-                                Our <span className="text-white font-bold underline decoration-2">molecular mixing</span> process builds flavor from the ground up — no alcohol to remove, no taste to lose.
+                            <p className="text-[#fdf9eb] leading-relaxed mt-4">
+                                Our <span className="text-[#fdf9eb] font-bold underline decoration-2">molecular mixing</span> process builds flavor from the ground up — no alcohol to remove, no taste to lose.
                             </p>
-                            <p className="text-white/90 mt-4">
+                            <p className="text-[#fdf9eb]/90 mt-4">
                                 Simple as making a soda. Tastes like craft beer.
                             </p>
                         </motion.div>
@@ -80,7 +86,7 @@ const Process: React.FC = () => {
                 {/* 4-Step Process with Illustration */}
                 <div className="max-w-6xl mx-auto mb-20">
                     <motion.h3 
-                        className="text-2xl md:text-3xl font-bold text-center text-white mb-12"
+                        className="text-2xl md:text-3xl font-bold text-center text-[#005a31] mb-12"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
@@ -100,13 +106,13 @@ const Process: React.FC = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
                                 >
-                                    <div className="aspect-square bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 flex flex-col justify-center items-center text-center shadow-lg group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300">
-                                        <div className="w-10 h-10 md:w-14 md:h-14 bg-[#ec1c24]/10 rounded-full flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#ec1c24] group-hover:scale-110 transition-all">
-                                            <step.icon className="w-5 h-5 md:w-7 md:h-7 text-[#ec1c24] group-hover:text-white transition-colors" />
+                                    <div className="aspect-square bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 flex flex-col justify-center items-center text-center shadow-lg group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300 border border-[#005a31]/10">
+                                        <div className="w-10 h-10 md:w-14 md:h-14 bg-[#005a31]/10 rounded-full flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#005a31] group-hover:scale-110 transition-all">
+                                            <step.icon className="w-5 h-5 md:w-7 md:h-7 text-[#005a31] group-hover:text-white transition-colors" />
                                         </div>
                                         <span className="text-xs text-[#ec1c24] font-bold mb-1">0{step.id}</span>
-                                        <h4 className="text-sm md:text-lg font-bold text-slate-900 mb-1 md:mb-2">{step.title}</h4>
-                                        <p className="text-xs md:text-sm text-slate-600 leading-snug hidden md:block">{step.description}</p>
+                                        <h4 className="text-sm md:text-lg font-bold text-[#005a31] mb-1 md:mb-2">{step.title}</h4>
+                                        <p className="text-xs md:text-sm text-[#005a31]/70 leading-snug hidden md:block">{step.description}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -207,29 +213,29 @@ const Process: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 md:p-12 rounded-3xl bg-slate-800 border border-slate-700">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 md:p-12 rounded-3xl bg-[#005a31] border border-[#005a31]">
                         <div className="space-y-6">
-                            <h3 className="text-3xl md:text-4xl font-bold text-white">
-                                Science & Belgian <span className="text-[#ec1c24]">Legacy</span>
+                            <h3 className="text-2xl md:text-3xl font-bold text-white">
+                                Science & Belgian <span className="text-[#f8b0b2]">Legacy</span>
                             </h3>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-white/90 leading-relaxed">
                                 Molecular mixing was developed by Belgian company{' '}
                                 <a 
                                     href="https://baron.bar" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="inline-flex items-center gap-1 text-[#ec1c24] font-bold hover:underline"
+                                    className="inline-flex items-center gap-1 text-[#f8b0b2] font-bold hover:underline"
                                 >
                                     Bar.on <ArrowRight className="w-4 h-4" />
                                 </a>
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-white/90 leading-relaxed">
                                 The technology is based on the research of <span className="text-white font-semibold">Miguel Roncoroni</span> and <span className="text-white font-semibold">Kevin Vestrepen</span> of the University of Leuven, as published in their book:
                             </p>
                         </div>
                         <div className="flex flex-col items-center text-center space-y-6">
-                            <div className="p-6 md:p-8 rounded-2xl bg-slate-900/50 border border-slate-600">
-                                <p className="text-[#ec1c24] text-2xl md:text-3xl font-bold italic font-heading">
+                            <div className="p-6 md:p-8 rounded-2xl bg-white/10 border border-white/20">
+                                <p className="text-[#f8b0b2] text-2xl md:text-3xl font-bold italic font-heading">
                                     "Belgian Beer Tested and Tasted"
                                 </p>
                             </div>

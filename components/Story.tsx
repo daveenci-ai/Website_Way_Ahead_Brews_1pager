@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Star, Brain, Coins } from 'lucide-react';
 
 // Beer data
 const beers = [
@@ -27,7 +27,7 @@ const beers = [
     name: 'Way Ahead Belgian White',
     img: '/images/logo/Belgian wing.png',
     description: 'The Belgian white beer style originated in Leuven. The stripe design reflects the city\'s coat of arms.',
-    bgColor: '#448efc',
+    bgColor: '#78aefd',
     textColor: 'text-white',
     emoji: '🇧🇪',
     emojiColor: undefined,
@@ -92,22 +92,13 @@ const Story: React.FC = () => {
             Our Story
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             The Way <span className="text-[#ec1c24]">Ahead</span> Story
           </motion.h2>
-          <motion.p 
-            className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            There is a reason our non-alcoholic beers are called Way Ahead. They are way ahead of the competition in terms of taste, freshness, and the variety of beer styles available.
-          </motion.p>
         </div>
 
         {/* Main Content Grid */}
@@ -121,10 +112,10 @@ const Story: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="order-2 md:order-1">
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Your Way <span className="text-[#ec1c24]">Ahead</span>
-              </h3>
               <div className="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                  There is a reason our non-alcoholic beers are called Way Ahead. They are way ahead of the competition in terms of taste, freshness, and the variety of beer styles available.
+                </p>
                 <p>
                   You no longer need to compromise and endure the headaches of alcohol consumption in order to enjoy exceptionally tasting beers. And you get good value for money, too.
                 </p>
@@ -132,18 +123,24 @@ const Story: React.FC = () => {
                   Exceptional taste, a wide variety of styles, full mental clarity, good value for money… With Way Ahead Brews you can have it all.
                 </p>
               </div>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full">
-                  <span className="text-[#ec1c24] font-bold">✓</span>
-                  <span className="text-sm font-medium text-slate-700">Exceptional Taste</span>
+              <div className="mt-8 flex flex-wrap gap-6">
+                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
+                  <div className="w-12 h-12 bg-[#ec1c24]/10 rounded-xl flex items-center justify-center">
+                    <Star className="w-6 h-6 text-[#ec1c24]" />
+                  </div>
+                  <span className="text-sm font-semibold text-slate-800">Exceptional Taste</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full">
-                  <span className="text-[#ec1c24] font-bold">✓</span>
-                  <span className="text-sm font-medium text-slate-700">Mental Clarity</span>
+                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
+                  <div className="w-12 h-12 bg-[#005a31]/10 rounded-xl flex items-center justify-center">
+                    <Brain className="w-6 h-6 text-[#005a31]" />
+                  </div>
+                  <span className="text-sm font-semibold text-slate-800">Mental Clarity</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full">
-                  <span className="text-[#ec1c24] font-bold">✓</span>
-                  <span className="text-sm font-medium text-slate-700">Great Value</span>
+                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
+                  <div className="w-12 h-12 bg-[#d4a84b]/20 rounded-xl flex items-center justify-center">
+                    <Coins className="w-6 h-6 text-[#d4a84b]" />
+                  </div>
+                  <span className="text-sm font-semibold text-slate-800">Great Value</span>
                 </div>
               </div>
             </div>
@@ -168,8 +165,7 @@ const Story: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl flex items-center justify-center p-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(236,28,36,0.1)_0%,_transparent_70%)]" />
+              <div className="aspect-square bg-[#005a31] rounded-3xl flex items-center justify-center p-8 relative overflow-hidden">
                 <img 
                   src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png"
                   alt="Way Ahead Wings Logo"
@@ -179,7 +175,7 @@ const Story: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
                 The Story of the <span className="text-[#ec1c24]">Wings</span>
               </h3>
               <div className="space-y-4 text-slate-600 leading-relaxed">
@@ -212,44 +208,6 @@ const Story: React.FC = () => {
                 y: beerYs[index]
               }}
             >
-              {/* Floating decorative elements - positioned on sides only */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {Array.from({ length: 12 }).map((_, i) => {
-                  // Position elements on left (0-20%) or right (80-100%) sides only
-                  const isLeftSide = i < 6;
-                  const sideIndex = i % 6;
-                  const leftPos = isLeftSide 
-                    ? `${3 + (sideIndex % 3) * 7}%`  // Left side: 3%, 10%, 17%
-                    : `${80 + (sideIndex % 3) * 7}%`; // Right side: 80%, 87%, 94%
-                  const topPos = `${10 + (sideIndex % 6) * 14}%`; // Spread vertically
-                  
-                  return (
-                    <motion.span
-                      key={i}
-                      className="absolute text-2xl md:text-3xl opacity-40"
-                      style={{
-                        left: leftPos,
-                        top: topPos,
-                        color: beer.emojiColor,
-                      }}
-                      animate={{ 
-                        y: [0, -30 - (i % 3) * 15, 0],
-                        rotate: [0, (i % 2 === 0 ? 15 : -15), 0],
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ 
-                        duration: 3 + (i % 3), 
-                        repeat: Infinity, 
-                        delay: i * 0.2,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {beer.emoji}
-                    </motion.span>
-                  );
-                })}
-              </div>
-
               <motion.img 
                 src={beer.img}
                 alt={beer.name}

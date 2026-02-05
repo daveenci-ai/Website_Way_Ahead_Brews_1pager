@@ -1,27 +1,14 @@
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface WingStoryProps {
   onMoreClick: () => void;
 }
 
 const WingStory: React.FC<WingStoryProps> = ({ onMoreClick }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    ['#0f172a', '#005a31', '#0f172a']
-  );
-
   return (
-    <section id="story" ref={containerRef} className="relative py-32 md:py-48 overflow-hidden transition-colors duration-700">
-      <motion.div style={{ backgroundColor }} className="absolute inset-0 z-0" />
+    <section id="story" className="relative py-32 md:py-48 overflow-hidden bg-[#005a31]">
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -31,9 +18,9 @@ const WingStory: React.FC<WingStoryProps> = ({ onMoreClick }) => {
             viewport={{ once: true }}
             className="text-center md:text-left"
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-none mb-8">
               A Legacy of <br/>
-              <span className="text-[#ec1c24]">Pure Intent.</span>
+              Pure Intent.
             </h2>
             <p className="text-xl text-white/90 leading-relaxed max-w-lg mb-10">
                 There is a reason our non-alcoholic beers are called Way Ahead. It’s not just a brand name, but a philosophy. You are Way Ahead because you prioritize taste, freshness, and mental clarity.
@@ -58,7 +45,7 @@ const WingStory: React.FC<WingStoryProps> = ({ onMoreClick }) => {
               transition={{ type: 'spring', stiffness: 50, delay: 0.2 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-[#ec1c24]/20 blur-[100px] rounded-full"></div>
+              <div className="absolute inset-0 bg-white/10 blur-[100px] rounded-full"></div>
               <img 
                 src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png"
                 alt="Way Ahead Logo"

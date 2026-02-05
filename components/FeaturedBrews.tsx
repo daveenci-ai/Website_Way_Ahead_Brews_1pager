@@ -66,9 +66,9 @@ const FeaturedBrews: React.FC<FeaturedBrewsProps> = ({ onShopClick }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-slate-900 mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-slate-900 mb-6"
           >
-            What are we brewing?
+            What's Brewing?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}

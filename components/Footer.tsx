@@ -21,18 +21,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     };
 
     return (
-        <footer className="bg-[#005a31] border-t border-white/10 relative overflow-hidden">
-            {/* Condensation Overlay */}
-            <div 
-              className="absolute inset-0 pointer-events-none opacity-20"
-              style={{
-                backgroundImage: 'url(/images/textures/condensation.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center bottom',
-                mixBlendMode: 'overlay'
-              }}
-            />
-            <div className="container mx-auto px-6 py-12 relative z-10">
+        <footer className="bg-[#005a31] border-t border-white/10">
+            <div className="container mx-auto px-6 py-12">
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     {/* Left Column - Brand Info */}
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -63,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
                     {/* Right Column - Contact Form */}
                     <div id="contact" className="flex flex-col items-center md:items-start scroll-mt-[120px]">
-                        <h3 className="text-white text-xl font-bold mb-4">Contact Us</h3>
+                        <h3 className="text-white text-2xl md:text-3xl font-bold mb-4">Contact Us</h3>
                         
                         {isContactSubmitted ? (
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 w-full max-w-md text-center">

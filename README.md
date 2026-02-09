@@ -24,6 +24,10 @@ A single-page immersive e-commerce site for Way Ahead Brews, a non-alcoholic bee
 npm run build
 ```
 
+## Deploy
+
+- Hosted on [Vercel](https://vercel.com) — https://dev.wayaheadbrews.com
+
 ## Tech Stack
 
 - React 18

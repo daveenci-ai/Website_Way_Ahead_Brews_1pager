@@ -1,17 +1,19 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
+import { GoogleMap as GoogleMapComponent, useJsApiLoader, InfoWindow, Marker } from '@react-google-maps/api';
 
 // ============================================
-// IMPORTANT: Replace with your Google Maps API Key
+// Replace with your Google Maps API Key
 // Get your API key at: https://console.cloud.google.com/google/maps-apis
 // ============================================
-const GOOGLE_MAPS_API_KEY = 'AIzaSyCOGbdu_4SDRXLD9JKViLRX-DEo3OlEMRw';
+const GOOGLE_MAPS_API_KEY = 'AIzaSyDmqrhs2AAP0mtjwuuLk3Hvjca-vx3oGJg';
 
 // Florida center coordinates and zoom level
 const FLORIDA_CENTER = { lat: 27.6648, lng: -81.5158 };
 const ZOOM_LEVEL = 7;
+const MAP_CONTAINER_STYLE = { width: '100%', height: '500px' };
 
 // Placeholder locations in Florida
 const locations = [
@@ -20,7 +22,7 @@ const locations = [
         name: 'Location A',
         city: 'Miami',
         position: { lat: 25.7617, lng: -80.1918 },
-        description: 'Way Ahead Brews - Miami Location',
+        description: 'Way Ahead Brews - Miami',
         address: '123 Ocean Drive, Miami, FL 33139'
     },
     {
@@ -28,190 +30,67 @@ const locations = [
         name: 'Location B',
         city: 'Orlando',
         position: { lat: 28.5383, lng: -81.3792 },
-        description: 'Way Ahead Brews - Orlando Location',
+        description: 'Way Ahead Brews - Orlando',
         address: '456 Magic Ave, Orlando, FL 32801'
-    },
-    {
-        id: 'location-c',
-        name: 'Location C',
-        city: 'Tallahassee',
-        position: { lat: 30.4383, lng: -84.2807 },
-        description: 'Way Ahead Brews - Tallahassee Location',
-        address: '789 Capitol Blvd, Tallahassee, FL 32301'
     }
 ];
 
-declare global {
-    interface Window {
-        google: typeof google;
-        initMap: () => void;
-    }
-}
+const MapContent: React.FC = () => {
+    const [selectedLocation, setSelectedLocation] = React.useState<typeof locations[0] | null>(null);
 
-const GoogleMap: React.FC = () => {
-    const mapRef = useRef<HTMLDivElement>(null);
-    const [mapLoaded, setMapLoaded] = useState(false);
-    const [mapError, setMapError] = useState<string | null>(null);
-    const mapInstanceRef = useRef<google.maps.Map | null>(null);
-    const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
-    const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
-
-    useEffect(() => {
-        // Check if API key is set
-        if (GOOGLE_MAPS_API_KEY === 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
-            setMapError('Please add your Google Maps API key to enable the map.');
-            return;
-        }
-
-        // Load Google Maps script
-        const loadGoogleMaps = () => {
-            if (window.google && window.google.maps) {
-                initializeMap();
-                return;
-            }
-
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=marker&callback=initMap`;
-            script.async = true;
-            script.defer = true;
-
-            window.initMap = initializeMap;
-
-            script.onerror = () => {
-                setMapError('Failed to load Google Maps. Please check your API key.');
-            };
-
-            document.head.appendChild(script);
-        };
-
-        const initializeMap = () => {
-            if (!mapRef.current) return;
-
-            try {
-                // Create the map
-                const map = new window.google.maps.Map(mapRef.current, {
-                    center: FLORIDA_CENTER,
-                    zoom: ZOOM_LEVEL,
-                    mapId: 'way_ahead_map', // Required for AdvancedMarkerElement
-                    disableDefaultUI: false,
+    return (
+        <>
+            <GoogleMapComponent
+                mapContainerStyle={MAP_CONTAINER_STYLE}
+                center={FLORIDA_CENTER}
+                zoom={ZOOM_LEVEL}
+                options={{
                     zoomControl: true,
                     mapTypeControl: false,
                     streetViewControl: false,
-                    fullscreenControl: true,
-                    styles: [
-                        {
-                            featureType: 'water',
-                            elementType: 'geometry',
-                            stylers: [{ color: '#78aefd' }]
-                        },
-                        {
-                            featureType: 'landscape',
-                            elementType: 'geometry',
-                            stylers: [{ color: '#f5f5f5' }]
-                        },
-                        {
-                            featureType: 'poi.park',
-                            elementType: 'geometry',
-                            stylers: [{ color: '#c5e8c5' }]
-                        }
-                    ]
-                });
-
-                mapInstanceRef.current = map;
-
-                // Create InfoWindow
-                const infoWindow = new window.google.maps.InfoWindow();
-                infoWindowRef.current = infoWindow;
-
-                // Create AdvancedMarkerElements for each location
-                locations.forEach((location) => {
-                    // Create custom marker content
-                    const markerContent = document.createElement('div');
-                    markerContent.className = 'custom-marker';
-                    markerContent.innerHTML = `
-                        <div style="
-                            background: #005a31;
-                            border: 3px solid #f5dd12;
-                            border-radius: 50%;
-                            width: 40px;
-                            height: 40px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                            cursor: pointer;
-                            transition: transform 0.2s;
-                        ">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fdf9eb" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                    fullscreenControl: true
+                }}
+            >
+                {locations.map((location) => (
+                    <Marker
+                        key={location.id}
+                        position={location.position}
+                        title={location.name}
+                        onClick={() => setSelectedLocation(location)}
+                    />
+                ))}
+                {selectedLocation && (
+                    <InfoWindow
+                        position={selectedLocation.position}
+                        onCloseClick={() => setSelectedLocation(null)}
+                    >
+                        <div style={{ padding: '4px', minWidth: '200px', fontFamily: 'system-ui, sans-serif' }}>
+                            <h3 style={{ margin: '0 0 8px 0', color: '#005a31', fontSize: '16px', fontWeight: 'bold' }}>
+                                {selectedLocation.name} - {selectedLocation.city}
+                            </h3>
+                            <p style={{ margin: '0 0 8px 0', color: '#333', fontSize: '14px' }}>
+                                {selectedLocation.description}
+                            </p>
+                            <p style={{ margin: 0, color: '#666', fontSize: '12px' }}>
+                                📍 {selectedLocation.address}
+                            </p>
                         </div>
-                        <div style="
-                            background: #005a31;
-                            color: #fdf9eb;
-                            padding: 4px 8px;
-                            border-radius: 4px;
-                            font-size: 12px;
-                            font-weight: bold;
-                            margin-top: 4px;
-                            text-align: center;
-                            white-space: nowrap;
-                        ">${location.name}</div>
-                    `;
+                    </InfoWindow>
+                )}
+            </GoogleMapComponent>
+        </>
+    );
+};
 
-                    // Create AdvancedMarkerElement
-                    const marker = new window.google.maps.marker.AdvancedMarkerElement({
-                        map,
-                        position: location.position,
-                        content: markerContent,
-                        title: location.name
-                    });
-
-                    // Add click listener for InfoWindow
-                    marker.addListener('click', () => {
-                        const infoContent = `
-                            <div style="padding: 12px; max-width: 250px; font-family: system-ui, sans-serif;">
-                                <h3 style="margin: 0 0 8px 0; color: #005a31; font-size: 16px; font-weight: bold;">
-                                    ${location.name} - ${location.city}
-                                </h3>
-                                <p style="margin: 0 0 8px 0; color: #333; font-size: 14px;">
-                                    ${location.description}
-                                </p>
-                                <p style="margin: 0; color: #666; font-size: 12px;">
-                                    📍 ${location.address}
-                                </p>
-                            </div>
-                        `;
-                        infoWindow.setContent(infoContent);
-                        infoWindow.open(map, marker);
-                    });
-
-                    markersRef.current.push(marker);
-                });
-
-                setMapLoaded(true);
-            } catch (error) {
-                console.error('Error initializing map:', error);
-                setMapError('Failed to initialize the map.');
-            }
-        };
-
-        loadGoogleMaps();
-
-        // Cleanup
-        return () => {
-            markersRef.current.forEach(marker => {
-                marker.map = null;
-            });
-            markersRef.current = [];
-        };
-    }, []);
+const GoogleMap: React.FC = () => {
+    const { isLoaded, loadError } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: GOOGLE_MAPS_API_KEY
+    });
 
     return (
         <section className="bg-[#fdf9eb] py-16 md:py-24">
             <div className="container mx-auto px-6">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -230,7 +109,6 @@ const GoogleMap: React.FC = () => {
                     </p>
                 </motion.div>
 
-                {/* Map Container */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -238,25 +116,8 @@ const GoogleMap: React.FC = () => {
                     transition={{ delay: 0.2 }}
                     className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-[#005a31]/20"
                 >
-                    {/* Error State */}
-                    {mapError && (
-                        <div 
-                            className="flex flex-col items-center justify-center bg-[#005a31]/5"
-                            style={{ height: '500px', width: '100%' }}
-                        >
-                            <MapPin className="w-16 h-16 text-[#005a31]/30 mb-4" />
-                            <p className="text-[#005a31] font-medium text-center px-4">
-                                {mapError}
-                            </p>
-                            <p className="text-[#005a31]/60 text-sm mt-2 text-center px-4">
-                                Add your API key in <code className="bg-[#005a31]/10 px-2 py-1 rounded">components/GoogleMap.tsx</code>
-                            </p>
-                        </div>
-                    )}
-
-                    {/* Loading State */}
-                    {!mapError && !mapLoaded && (
-                        <div 
+                    {!isLoaded && !loadError && (
+                        <div
                             className="absolute inset-0 flex items-center justify-center bg-[#005a31]/5 z-10"
                             style={{ height: '500px' }}
                         >
@@ -267,27 +128,33 @@ const GoogleMap: React.FC = () => {
                         </div>
                     )}
 
-                    {/* Map Element */}
-                    <div 
-                        ref={mapRef}
-                        style={{ 
-                            height: '500px', 
-                            width: '100%',
-                            display: mapError ? 'none' : 'block'
-                        }}
-                    />
+                    {loadError && (
+                        <div
+                            className="flex flex-col items-center justify-center bg-[#005a31]/5"
+                            style={{ height: '500px', width: '100%' }}
+                        >
+                            <MapPin className="w-16 h-16 text-[#005a31]/30 mb-4" />
+                            <p className="text-[#005a31] font-medium text-center px-4">
+                                Map could not load. Add your site URLs to the API key in Google Cloud Console.
+                            </p>
+                            <p className="text-[#005a31]/60 text-sm mt-2 text-center px-4 max-w-md">
+                                Credentials → your key → Application restrictions → HTTP referrers. Add: <code className="bg-[#005a31]/10 px-1 rounded text-xs">http://localhost:3000/*</code> and <code className="bg-[#005a31]/10 px-1 rounded text-xs">https://dev.wayaheadbrews.com/*</code>
+                            </p>
+                        </div>
+                    )}
+
+                    {isLoaded && <MapContent />}
                 </motion.div>
 
-                {/* Location Cards */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="grid md:grid-cols-3 gap-6 mt-8"
+                    className="grid md:grid-cols-2 gap-6 mt-8"
                 >
                     {locations.map((location) => (
-                        <div 
+                        <div
                             key={location.id}
                             className="bg-white rounded-2xl p-6 shadow-lg border border-[#005a31]/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >

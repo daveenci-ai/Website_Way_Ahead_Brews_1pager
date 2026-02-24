@@ -1,7 +1,6 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles, Star, Brain, Coins } from 'lucide-react';
 
 // Beer data
 const beers = [
@@ -32,15 +31,6 @@ const beers = [
     emoji: '🇧🇪',
     emojiColor: undefined,
   },
-  {
-    name: 'Way Ahead Strawberry',
-    img: '/images/logo/Straw wing.png',
-    description: 'The Way Ahead Strawberry Wings simply feature strawberries. Pure, fruity, delicious.',
-    bgColor: '#f8b0b2',
-    textColor: 'text-slate-900',
-    emoji: '🍓',
-    emojiColor: '#c41e3a',
-  },
 ];
 
 const Story: React.FC = () => {
@@ -50,49 +40,35 @@ const Story: React.FC = () => {
     offset: ["start start", "end end"] 
   });
 
-  // Background color - snaps at each quarter
+  // Background color - snaps at each third
   const bgColor = useTransform(
-    scrollYProgress, 
-    [0, 0.249, 0.25, 0.499, 0.5, 0.749, 0.75, 1], 
-    [beers[0].bgColor, beers[0].bgColor, beers[1].bgColor, beers[1].bgColor, beers[2].bgColor, beers[2].bgColor, beers[3].bgColor, beers[3].bgColor]
+    scrollYProgress,
+    [0, 0.32, 0.33, 0.65, 0.66, 1],
+    [beers[0].bgColor, beers[0].bgColor, beers[1].bgColor, beers[1].bgColor, beers[2].bgColor, beers[2].bgColor]
   );
 
-  // Current beer index (0-3) based on scroll
-  const beerIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3]);
-
   // Opacity for each beer card
-  const beer0Opacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3], [1, 1, 0, 0]);
-  const beer1Opacity = useTransform(scrollYProgress, [0.2, 0.25, 0.45, 0.5], [0, 1, 1, 0]);
-  const beer2Opacity = useTransform(scrollYProgress, [0.45, 0.5, 0.7, 0.75], [0, 1, 1, 0]);
-  const beer3Opacity = useTransform(scrollYProgress, [0.7, 0.75, 1], [0, 1, 1]);
+  const beer0Opacity = useTransform(scrollYProgress, [0, 0.27, 0.33, 0.38], [1, 1, 0, 0]);
+  const beer1Opacity = useTransform(scrollYProgress, [0.28, 0.33, 0.6, 0.66], [0, 1, 1, 0]);
+  const beer2Opacity = useTransform(scrollYProgress, [0.6, 0.66, 1], [0, 1, 1]);
 
   // Y position for each beer (slide up animation)
-  const beer0Y = useTransform(scrollYProgress, [0, 0.2, 0.25], [0, 0, -50]);
-  const beer1Y = useTransform(scrollYProgress, [0.2, 0.25, 0.45, 0.5], [50, 0, 0, -50]);
-  const beer2Y = useTransform(scrollYProgress, [0.45, 0.5, 0.7, 0.75], [50, 0, 0, -50]);
-  const beer3Y = useTransform(scrollYProgress, [0.7, 0.75, 1], [50, 0, 0]);
+  const beer0Y = useTransform(scrollYProgress, [0, 0.27, 0.33], [0, 0, -50]);
+  const beer1Y = useTransform(scrollYProgress, [0.28, 0.33, 0.6, 0.66], [50, 0, 0, -50]);
+  const beer2Y = useTransform(scrollYProgress, [0.6, 0.66, 1], [50, 0, 0]);
 
-  const beerOpacities = [beer0Opacity, beer1Opacity, beer2Opacity, beer3Opacity];
-  const beerYs = [beer0Y, beer1Y, beer2Y, beer3Y];
+  const beerOpacities = [beer0Opacity, beer1Opacity, beer2Opacity];
+  const beerYs = [beer0Y, beer1Y, beer2Y];
 
   return (
-    <section id="story-section" className="bg-white scroll-mt-[180px]">
+    <section id="story-section" className="bg-white scroll-mt-[168px]">
       {/* Static Story Content */}
       <div className="container mx-auto px-6 py-24 md:py-32">
         
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ec1c24]/10 border border-[#ec1c24]/20 text-[#ec1c24] text-sm font-medium tracking-wider uppercase mb-6"
-          >
-            <Sparkles className="w-4 h-4" />
-            Our Story
-          </motion.div>
-          <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight"
+          <motion.h2
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -112,7 +88,7 @@ const Story: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="order-2 md:order-1">
-              <div className="space-y-4 text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
                   There is a reason our non-alcoholic beers are called Way Ahead. They are way ahead of the competition in terms of taste, freshness, and the variety of beer styles available.
                 </p>
@@ -122,26 +98,6 @@ const Story: React.FC = () => {
                 <p>
                   Exceptional taste, a wide variety of styles, full mental clarity, good value for money… With Way Ahead Brews you can have it all.
                 </p>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-6">
-                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
-                  <div className="w-12 h-12 bg-[#ec1c24]/10 rounded-xl flex items-center justify-center">
-                    <Star className="w-6 h-6 text-[#ec1c24]" />
-                  </div>
-                  <span className="text-sm font-semibold text-slate-800">Exceptional Taste</span>
-                </div>
-                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
-                  <div className="w-12 h-12 bg-[#005a31]/10 rounded-xl flex items-center justify-center">
-                    <Brain className="w-6 h-6 text-[#005a31]" />
-                  </div>
-                  <span className="text-sm font-semibold text-slate-800">Mental Clarity</span>
-                </div>
-                <div className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-slate-100 min-w-[120px]">
-                  <div className="w-12 h-12 bg-[#d4a84b]/20 rounded-xl flex items-center justify-center">
-                    <Coins className="w-6 h-6 text-[#d4a84b]" />
-                  </div>
-                  <span className="text-sm font-semibold text-slate-800">Great Value</span>
-                </div>
               </div>
             </div>
             <div className="order-1 md:order-2 relative">
@@ -175,12 +131,12 @@ const Story: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-                The Story of the <span className="text-[#ec1c24]">Wings</span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black mb-6">
+                The Wings <span className="text-[#ec1c24]">Logos</span>
               </h3>
-              <div className="space-y-4 text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
-                  Inspired by the family crest of our founder, <span className="font-semibold text-slate-900">Ove Haxthausen</span>, the Wings communicate what makes our beer Way Ahead.
+                  Inspired by the family crest of our founder, <span className="font-semibold text-black">Ove Haxthausen</span>, the Wings communicate what makes our beer Way Ahead.
                 </p>
                 <p>
                   Excellence in what we do, symbolized by the crown, and no compromises between exceptional taste, the negative effects of alcohol and good value for money, symbolized by the two wings of freedom rising out of the crown of excellence.
@@ -193,7 +149,7 @@ const Story: React.FC = () => {
       </div>
 
       {/* Sticky Beer Showcase - 4 screens tall for 4 beers */}
-      <div ref={containerRef} className="relative" style={{ height: '400vh' }}>
+      <div ref={containerRef} className="relative" style={{ height: '300vh' }}>
         <motion.div 
           className="sticky top-0 w-full h-screen overflow-hidden"
           style={{ backgroundColor: bgColor }}
@@ -208,15 +164,10 @@ const Story: React.FC = () => {
                 y: beerYs[index]
               }}
             >
-              <motion.img 
+              <img
                 src={beer.img}
                 alt={beer.name}
                 className="w-56 md:w-80 lg:w-96 h-auto object-contain mb-6 drop-shadow-2xl relative z-10"
-                animate={{ 
-                  rotate: index % 2 === 0 ? [-2, 2, -2] : [2, -2, 2], 
-                  y: [0, -8, 0] 
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
               <p className={`text-sm md:text-lg lg:text-xl leading-relaxed max-w-xl text-center relative z-10 ${beer.textColor} opacity-90`}>
                 {beer.description}
@@ -233,7 +184,7 @@ const Story: React.FC = () => {
                 style={{
                   backgroundColor: useTransform(
                     scrollYProgress,
-                    [i * 0.25, i * 0.25 + 0.01, (i + 1) * 0.25 - 0.01, (i + 1) * 0.25],
+                    [i * 0.33, i * 0.33 + 0.01, (i + 1) * 0.33 - 0.01, (i + 1) * 0.33],
                     ['rgba(255,255,255,0.2)', 'rgba(255,255,255,1)', 'rgba(255,255,255,1)', 'rgba(255,255,255,0.2)']
                   )
                 }}

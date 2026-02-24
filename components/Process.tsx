@@ -12,7 +12,7 @@ const processSteps = [
 
 const Process: React.FC = () => {
     return (
-        <section id="process" className="py-24 md:py-32 bg-[#fdf9eb] overflow-hidden scroll-mt-[180px]">
+        <section id="process" className="py-24 md:py-32 bg-[#fdf9eb] overflow-hidden scroll-mt-[168px]">
             <div className="container mx-auto px-6">
                 
                 {/* Header */}

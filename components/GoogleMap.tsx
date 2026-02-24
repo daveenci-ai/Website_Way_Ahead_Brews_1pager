@@ -97,15 +97,15 @@ const GoogleMap: React.FC = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#005a31]/10 border border-[#005a31]/20 text-[#005a31] text-sm font-medium tracking-wider uppercase mb-6">
-                        <MapPin className="w-4 h-4" />
-                        Find Us
-                    </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#005a31] tracking-tight mb-4">
-                        Our <span className="text-[#ec1c24]">Locations</span>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight mb-4">
+                        Find <span className="text-[#ec1c24]">Us</span>
                     </h2>
-                    <p className="text-[#005a31]/70 text-lg max-w-2xl mx-auto">
-                        Visit one of our locations across Florida to experience Way Ahead Brews in person.
+                    <p className="text-black text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        If you are located in the United States, shop online{' '}
+                        <a href="#shop-section" className="text-[#ec1c24] font-semibold underline hover:text-[#ec1c24]/80 transition-colors">here</a>.
+                    </p>
+                    <p className="text-black text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mt-2">
+                        If you are in Florida, find your nearest Way Ahead retailer below.
                     </p>
                 </motion.div>
 

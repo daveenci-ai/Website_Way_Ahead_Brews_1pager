@@ -5,9 +5,9 @@ import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
 import ComingSoon from './components/ComingSoon.tsx';
 import FeaturedBrews from './components/FeaturedBrews.tsx';
-import WingStory from './components/WingStory.tsx';
+
 import Story from './components/Story.tsx';
-import Process from './components/Process.tsx';
+
 import GoogleMap from './components/GoogleMap.tsx';
 import Footer from './components/Footer.tsx';
 
@@ -42,9 +42,7 @@ const App: React.FC = () => {
           />
           <FeaturedBrews />
           <ComingSoon />
-          <WingStory onMoreClick={scrollToStory} />
           <Story />
-          <Process />
           <GoogleMap />
         </main>
         <Footer onNavigate={navigateTo} />

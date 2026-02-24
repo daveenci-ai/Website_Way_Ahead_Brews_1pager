@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Page } from '../App.tsx';
@@ -30,6 +30,34 @@ const NavLink: React.FC<NavLinkProps> = ({ active, onClick, children }) => {
 
 const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> = ({ currentPage, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sectionIds = ['story-section', 'process', 'contact'];
+    const visibleSections = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target.id);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        }
+        // Pick the first visible section in DOM order, or null if none visible
+        const active = sectionIds.find((id) => visibleSections.has(id)) || null;
+        setActiveSection(active);
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    );
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, [currentPage]);
 
   const handleNav = (page: Page) => {
     onNavigate(page);
@@ -88,23 +116,23 @@ const Header: React.FC<{ currentPage: Page; onNavigate: (page: Page) => void }> 
               onClick={() => handleNav('home')} 
               className="flex items-center group outline-none -ml-1"
             >
-              <img 
-                src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png" 
-                alt="Way Ahead Logo" 
-                width="320"
-                height="88"
+              <img
+                src="/images/logo/WayAhead-Symbol-White.svg"
+                alt="Way Ahead Logo"
+                width="60"
+                height="60"
                 /* @ts-ignore - fetchpriority is a valid experimental attribute */
                 fetchpriority="high"
                 decoding="async"
-                className="h-20 md:h-[88px] w-auto transition-transform group-hover:scale-105" 
+                className="h-[58px] md:h-[72px] w-auto"
               />
             </button>
 
             {/* Desktop Navigation - Centered */}
             <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-              <NavLink active={false} onClick={scrollToStory}>Our Story</NavLink>
-              <NavLink active={false} onClick={scrollToProcess}>Our Process</NavLink>
-              <NavLink active={false} onClick={scrollToContact}>Contact Us</NavLink>
+              <NavLink active={activeSection === 'story-section'} onClick={scrollToStory}>Our Story</NavLink>
+              <NavLink active={activeSection === 'process'} onClick={scrollToProcess}>Our Process</NavLink>
+              <NavLink active={activeSection === 'contact'} onClick={scrollToContact}>Contact Us</NavLink>
             </nav>
 
             {/* Actions */}

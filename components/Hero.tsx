@@ -101,7 +101,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="block text-white text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight mb-4"
+              className="block text-white text-3xl md:text-4xl lg:text-5xl font-heading font-bold tracking-tight mb-4"
             >
               COMING SOON
             </motion.span>
@@ -115,7 +115,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               <img 
                 src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png"
                 alt="Way Ahead Brews Logo"
-                className="h-48 md:h-64 lg:h-80 w-auto object-contain"
+                className="h-[211px] md:h-[282px] lg:h-[352px] w-auto object-contain"
                 loading="eager"
               />
             </motion.div>
@@ -137,8 +137,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               transition={{ duration: 0.4 }}
               className="flex flex-col items-center gap-2 px-8 py-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30"
             >
-              <span className="text-3xl">🍻</span>
-              <p className="text-white text-lg md:text-xl font-bold text-center">
+              <p className="text-[#ec1c24] text-lg md:text-xl font-bold text-center">
                 Cheers! Check your inbox for your discount code.
               </p>
             </motion.div>
@@ -146,7 +145,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
             <div className="backdrop-blur-sm rounded-3xl" style={{ padding: '5px' }}>
               {/* Signup Text */}
               <p className="text-white text-base md:text-lg lg:text-xl font-bold text-center mb-4 md:whitespace-nowrap drop-shadow-lg">
-                Be the first to taste the future. Sign up now for 50% off your first order.
+                Taste our product! Sign up now for 50% off your first order.
               </p>
               
               {/* Email Form */}
@@ -176,7 +175,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
 
       {/* --- FIXED EMAIL SIGNUP (shows when scrolling) --- */}
       {showStickyForm && !isSubmitted && (
-        <div className="fixed top-[96px] left-0 right-0 z-40 flex justify-center px-4">
+        <div className="fixed top-[88px] left-0 right-0 z-40 flex justify-center px-4">
           <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

@@ -26,7 +26,7 @@ const ComingSoon: React.FC = () => {
       ([entry]) => {
         setIsSticky(!entry.isIntersecting);
       },
-      { threshold: 0, rootMargin: '-96px 0px 0px 0px' }
+      { threshold: 0, rootMargin: '-88px 0px 0px 0px' }
     );
 
     observer.observe(sentinel);
@@ -41,7 +41,7 @@ const ComingSoon: React.FC = () => {
         ref={sectionRef}
         className={`relative w-full overflow-x-hidden sticky z-[45] flex items-center transition-all duration-300 ${isSticky ? 'shadow-lg h-[110px] md:h-[70px]' : 'h-[200px]'}`}
         style={{
-          top: '96px',
+          top: '88px',
           background: 'linear-gradient(135deg, #d4a84b 0%, #c9973a 25%, #b8862e 50%, #d4a84b 75%, #e6bc5a 100%)',
           transform: 'translateZ(0)', /* iOS Safari sticky fix */
           WebkitBackfaceVisibility: 'hidden',
@@ -78,8 +78,7 @@ const ComingSoon: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className={`flex items-center gap-3 rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 ${isSticky ? 'px-4 py-2' : 'px-6 py-4'}`}
               >
-                <span className={isSticky ? 'text-xl' : 'text-2xl'}>🍻</span>
-                <p className={`text-white font-bold ${isSticky ? 'text-sm' : ''}`}>You're on the list!</p>
+                <p className={`text-[#ec1c24] font-bold ${isSticky ? 'text-sm' : ''}`}>Cheers! Check your inbox for your discount code.</p>
               </motion.div>
             ) : (
               <form 

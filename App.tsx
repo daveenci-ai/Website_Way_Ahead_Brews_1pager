@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CartProvider } from './context/CartContext.tsx';
 import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
-import ComingSoon from './components/ComingSoon.tsx';
+
 import FeaturedBrews from './components/FeaturedBrews.tsx';
 
 import Story from './components/Story.tsx';
@@ -41,7 +41,6 @@ const App: React.FC = () => {
             onStoryClick={scrollToStory}
           />
           <FeaturedBrews />
-          <ComingSoon />
           <Story />
           <GoogleMap />
         </main>

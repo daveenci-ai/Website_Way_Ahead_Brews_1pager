@@ -73,7 +73,7 @@ const Story: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            The Way <span className="text-[#ec1c24]">Ahead</span> Story
+            The Way Ahead Story
           </motion.h2>
         </div>
 
@@ -132,7 +132,7 @@ const Story: React.FC = () => {
             </div>
             <div>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black mb-6">
-                The Wings <span className="text-[#ec1c24]">Logos</span>
+                The Wings Logos
               </h3>
               <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>

@@ -101,7 +101,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="block text-white text-3xl md:text-4xl lg:text-5xl font-heading font-bold tracking-tight mb-4"
+              className="block text-[#005a31] text-3xl md:text-4xl lg:text-5xl font-heading font-bold tracking-tight mb-4"
             >
               COMING SOON
             </motion.span>

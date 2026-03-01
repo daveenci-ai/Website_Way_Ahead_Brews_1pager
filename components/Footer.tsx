@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Github, Twitter, Instagram, Send } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Send } from 'lucide-react';
 import { Page } from '../App.tsx';
 
 interface FooterProps {
@@ -27,14 +27,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     {/* Left Column - Brand Info */}
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <button onClick={() => onNavigate('home')} className="flex items-center mb-6 group outline-none">
-                            <img 
-                              src="/images/logo/WayAhead-Logo-RGB-260115-v01ccr.png" 
-                              alt="Way Ahead Logo" 
+                            <img
+                              src="/images/logo/WayAhead-Symbol-WABRed.png"
+                              alt="Way Ahead Logo"
                               width="240"
                               height="64"
                               loading="lazy"
                               decoding="async"
-                              className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105" 
+                              className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105"
                             />
                         </button>
                         <p className="max-w-md text-white leading-relaxed mb-8">
@@ -45,9 +45,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                           <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-white hover:text-white/70 transition-colors">Our Process</button>
                         </nav>
                         <div className="flex space-x-6">
-                            <a href="#" className="text-white hover:text-white/70 transition-colors"><Twitter /></a>
-                            <a href="#" className="text-white hover:text-white/70 transition-colors"><Instagram /></a>
-                            <a href="#" className="text-white hover:text-white/70 transition-colors"><Github /></a>
+                            <a href="https://www.facebook.com/profile.php?id=61586177761933" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/70 transition-colors"><Facebook /></a>
+                            <a href="https://www.instagram.com/wayaheadbrews/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/70 transition-colors"><Instagram /></a>
+                            <a href="https://www.linkedin.com/company/way-ahead-brews" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/70 transition-colors"><Linkedin /></a>
                         </div>
                     </div>
 

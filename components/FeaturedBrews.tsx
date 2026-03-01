@@ -40,7 +40,7 @@ const FeaturedBrews: React.FC<FeaturedBrewsProps> = ({ onShopClick }) => {
   return (
     <section
       id="featured"
-      className="relative bg-white overflow-visible flex flex-col items-center py-24 md:py-32"
+      className="relative bg-white overflow-visible flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12"
     >
       <div className="container mx-auto px-6 flex flex-col items-center">
         {/* Title and Subtitle */}
@@ -50,7 +50,7 @@ const FeaturedBrews: React.FC<FeaturedBrewsProps> = ({ onShopClick }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-900 mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black mb-6"
           >
             Our Products
           </motion.h2>
@@ -59,7 +59,7 @@ const FeaturedBrews: React.FC<FeaturedBrewsProps> = ({ onShopClick }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-slate-600 text-center max-w-3xl mb-4"
+            className="text-lg md:text-xl text-black text-center max-w-3xl mb-4"
           >
             Everybody who has ever tasted our three non-alcoholic beer-style beverages agree: They taste exceptionally good! But don't take their word for it: Pick one or have them all, either way you're
           </motion.p>
@@ -73,7 +73,7 @@ const FeaturedBrews: React.FC<FeaturedBrewsProps> = ({ onShopClick }) => {
         </div>
 
         {/* Cans */}
-        <div className="flex justify-center items-end gap-2 md:gap-6 w-full max-w-4xl" style={{ marginTop: '1.5cm', marginBottom: '2cm' }}>
+        <div className="flex justify-center items-end gap-2 md:gap-6 w-full max-w-4xl" style={{ marginTop: '1.5cm' }}>
           {CANS.map((can, index) => (
             <motion.div
               key={can.id}

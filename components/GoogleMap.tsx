@@ -98,7 +98,7 @@ const GoogleMap: React.FC = () => {
                     className="text-center mb-12"
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight mb-4">
-                        Find <span className="text-[#ec1c24]">Us</span>
+                        Find Us
                     </h2>
                     <p className="text-black text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                         If you are located in the United States, shop online{' '}

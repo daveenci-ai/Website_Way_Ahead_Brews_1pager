@@ -63,22 +63,22 @@ const Story: React.FC = () => {
   return (
     <section id="story-section" className="bg-white scroll-mt-[168px]">
       {/* Static Story Content */}
-      <div className="container mx-auto px-6 py-24 md:py-32">
+      <div className="container mx-auto px-6 pb-20 md:pb-28" style={{ paddingTop: '5cm' }}>
         
-        {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-          <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            The Way Ahead Story
-          </motion.h2>
-        </div>
-
         {/* Main Content Grid */}
         <div className="max-w-6xl mx-auto">
+
+          {/* Header */}
+          <div className="mb-6">
+            <motion.h2
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              The Way Ahead Story
+            </motion.h2>
+          </div>
           
           {/* First Row - Why Way Ahead */}
           <motion.div 
@@ -90,23 +90,22 @@ const Story: React.FC = () => {
             <div className="order-2 md:order-1">
               <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
-                  There is a reason our non-alcoholic beers are called Way Ahead. They are way ahead of the competition in terms of taste, freshness, and the variety of beer styles available.
+                  It all started back in 2018. Researchers Miguel Roncoroni and Kevin Vestrepen of leading Belgian university KU Leuven published "Belgian Beer Tested and Tasted", an analysis of the molecular make-up of 250 Belgian beers. The underlying research linked beer taste profiles to specific molecules. Entrepreneur Dirk Standaert then founded <a href="https://www.bar-on.com" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV with a mission: Leverage that research to combine natural ingredients to produce "beer" without fermentation. Molecular mixing was born, a way to produce non-alcoholic "near beer" that closely replicates the taste of regular beer, without the hassle of fermentation.
                 </p>
                 <p>
-                  You no longer need to compromise and endure the headaches of alcohol consumption in order to enjoy exceptionally tasting beers. And you get good value for money, too.
+                  <a href="https://www.bar-on.com" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV's molecular mixing technology is the "secret sauce" behind Way Ahead Brews' exceptionally tasting non-alcoholic beer-style beverages.
                 </p>
                 <p>
-                  Exceptional taste, a wide variety of styles, full mental clarity, good value for money… With Way Ahead Brews you can have it all.
+                  When the aim is to produce a high quality non-alcoholic beverage, why use a process like fermentation that naturally produces alcohol, and then try and modify it to eliminate the alcohol? We believe the better way is to carefully blend selected natural ingredients to create the desired taste profile, from the ground up. A simple, straight-forward approach.
                 </p>
               </div>
             </div>
             <div className="order-1 md:order-2 relative">
-              <div className="aspect-square bg-gradient-to-br from-amber-100 to-amber-50 rounded-3xl flex items-center justify-center p-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/images/textures/condensation.png')] opacity-10" />
-                <img 
-                  src="/images/cans/Pilsner.png"
-                  alt="Way Ahead Beer"
-                  className="w-48 md:w-64 h-auto object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              <div className="aspect-square rounded-3xl flex items-center justify-center p-8 relative overflow-hidden">
+                <img
+                  src="/images/pictures/belgian-beer-book.webp"
+                  alt="Belgian Beer Tested and Tasted book"
+                  className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
                   loading="lazy"
                 />
               </div>
@@ -136,10 +135,10 @@ const Story: React.FC = () => {
               </h3>
               <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
-                  Inspired by the family crest of our founder, <span className="font-semibold text-black">Ove Haxthausen</span>, the Wings communicate what makes our beer Way Ahead.
+                  Our wings logos are inspired by the family crest of our founder, Ove Haxthausen. While the Haxthausen family crest design goes back some 700 years, Way Ahead Brews took the same approach to logo development that we used for making our products: Just because things have been done a certain way for centuries, doesn't mean we can't do way better!
                 </p>
                 <p>
-                  Excellence in what we do, symbolized by the crown, and no compromises between exceptional taste, the negative effects of alcohol and good value for money, symbolized by the two wings of freedom rising out of the crown of excellence.
+                  So, we changed the Haxthausen family crest to display hops on the wings instead of the family's "wagon gates" for the Way Ahead Brews logo. We then developed specific wing crests for each of our near-beer products. Each product crest reflects the legacy of that specific beer style. Because each of our products has its own distinct identity grounded in unique, exceptional taste, we believe it deserves its own heraldic crest that conveys that identity and makes it stand out from the crowd.
                 </p>
               </div>
             </div>

@@ -7,7 +7,7 @@ const beers = [
   {
     name: 'Way Ahead Pilsner',
     img: '/images/logo/Pilsner wing.png',
-    description: 'Our pilsner echoes the pilsners of our founder\'s native Denmark. The red hearts on the yellow wings are a nod to Denmark\'s coat of arms.',
+    description: 'Our pilsner echoes the pilsners of our founder\'s native Denmark. The red hearts on the yellow crests are a nod to Denmark\'s coat of arms.',
     bgColor: '#005a31',
     textColor: 'text-white',
     emoji: '♥',

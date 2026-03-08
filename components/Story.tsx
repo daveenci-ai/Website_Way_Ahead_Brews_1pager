@@ -90,13 +90,13 @@ const Story: React.FC = () => {
             <div className="order-2 md:order-1">
               <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
-                  It all started back in 2018. Researchers Miguel Roncoroni and Kevin Vestrepen of leading Belgian university KU Leuven published "Belgian Beer Tested and Tasted", an analysis of the molecular make-up of 250 Belgian beers. The underlying research linked beer taste profiles to specific molecules. Entrepreneur Dirk Standaert then founded <a href="https://www.bar-on.com" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV with a mission: Leverage that research to combine natural ingredients to produce "beer" without fermentation. Molecular mixing was born, a way to produce non-alcoholic "near beer" that closely replicates the taste of regular beer, without the hassle of fermentation.
+                  It all started back in 2018. Researchers Miguel Roncoroni and Kevin Vestrepen of leading Belgian university KU Leuven published "Belgian Beer Tested and Tasted", an analysis of the molecular make-up of 250 Belgian beers. The underlying research linked beer taste profiles to specific molecules. Entrepreneur Dirk Standaert then founded <a href="https://baron.bar" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV with a mission: Leverage that research to combine natural ingredients to produce "beer" without fermentation. Molecular mixing was born, a way to produce non-alcoholic "near beer" that closely replicates the taste of regular beer, without the hassle of fermentation.
                 </p>
                 <p>
-                  <a href="https://www.bar-on.com" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV's molecular mixing technology is the "secret sauce" behind Way Ahead Brews' exceptionally tasting non-alcoholic beer-style beverages.
+                  <a href="https://baron.bar" target="_blank" rel="noopener noreferrer" className="text-[#ec1c24] underline hover:text-[#c4161d]">Bar.on</a> BV's molecular mixing technology is the "secret sauce" behind Way Ahead Brews' exceptionally tasting non-alcoholic beer-style beverages.
                 </p>
                 <p>
-                  When the aim is to produce a high quality non-alcoholic beverage, why use a process like fermentation that naturally produces alcohol, and then try and modify it to eliminate the alcohol? We believe the better way is to carefully blend selected natural ingredients to create the desired taste profile, from the ground up. A simple, straight-forward approach.
+                  When the aim is to produce a high quality non-alcoholic beverage, why use a process like fermentation that naturally produces alcohol, and then try and modify it to eliminate the alcohol? We believe the better way is to blend selected natural ingredients to create the desired taste profile, from the ground up. A much simpler, straight-forward approach.
                 </p>
               </div>
             </div>
@@ -131,14 +131,20 @@ const Story: React.FC = () => {
             </div>
             <div>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black mb-6">
-                The Wings Logos
+                The Crest Logos
               </h3>
               <div className="space-y-4 text-black leading-relaxed text-lg md:text-xl">
                 <p>
-                  Our wings logos are inspired by the family crest of our founder, Ove Haxthausen. While the Haxthausen family crest design goes back some 700 years, Way Ahead Brews took the same approach to logo development that we used for making our products: Just because things have been done a certain way for centuries, doesn't mean we can't do way better!
+                  Our crest logos are inspired by the family crest of our founder, Ove Haxthausen. While the Haxthausen family crest design goes back some 700 years, Way Ahead Brews took the same approach to logo development that we used for making our products: Just because things have been done a certain way for centuries, doesn't mean we can't do way better!
                 </p>
                 <p>
-                  So, we changed the Haxthausen family crest to display hops on the wings instead of the family's "wagon gates" for the Way Ahead Brews logo. We then developed specific wing crests for each of our near-beer products. Each product crest reflects the legacy of that specific beer style. Because each of our products has its own distinct identity grounded in unique, exceptional taste, we believe it deserves its own heraldic crest that conveys that identity and makes it stand out from the crowd.
+                  So, we changed the Haxthausen family crest to display hops instead of the family's "wagon gates" for the Way Ahead Brews logo. We then developed specific crests for each of our near-beer products. Each product crest reflects the legacy of that specific beer style. Because each of our products has its own distinct identity grounded in unique, exceptional taste, we believe it deserves its own heraldic crest that conveys that identity and makes it stand out from the crowd.
+                </p>
+                <p>
+                  Our pilsner echoes the pilsners of our founder's native Denmark. The red hearts on the yellow crests are a nod to Denmark's coat of arms.
+                </p>
+                <p>
+                  Our Hazy IPA was developed with New England style IPAs in mind. The stars are a reference to the American flag.
                 </p>
               </div>
             </div>

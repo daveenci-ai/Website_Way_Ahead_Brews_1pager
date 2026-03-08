@@ -145,7 +145,7 @@ const Hero: React.FC<HeroProps> = ({ onStoryClick }) => {
             <div className="backdrop-blur-sm rounded-3xl" style={{ padding: '5px' }}>
               {/* Signup Text */}
               <p className="text-white text-base md:text-lg lg:text-xl font-bold text-center mb-4 md:whitespace-nowrap drop-shadow-lg">
-                Taste our product! Sign up now for 50% off your first order.
+                Taste our product! Sign up now for 50% off your first six-packs.
               </p>
               
               {/* Email Form */}

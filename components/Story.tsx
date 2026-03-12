@@ -7,7 +7,7 @@ const beers = [
   {
     name: 'Way Ahead Pilsner',
     img: '/images/logo/Pilsner wing.png',
-    description: '',
+    description: 'Our pilsner echoes the pilsners of our founder\'s native Denmark. The red hearts on the yellow crests are a nod to Denmark\'s coat of arms.',
     bgColor: '#005a31',
     textColor: 'text-white',
     emoji: '♥',
@@ -16,7 +16,7 @@ const beers = [
   {
     name: 'Way Ahead Hazy IPA',
     img: '/images/logo/IPA wing.png',
-    description: '',
+    description: 'Our Hazy IPA was developed with New England style IPAs in mind. The stars are a reference to the American flag.',
     bgColor: '#6e80a6',
     textColor: 'text-white',
     emoji: '★',

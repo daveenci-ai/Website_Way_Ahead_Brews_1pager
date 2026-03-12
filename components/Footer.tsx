@@ -37,12 +37,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                               className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105"
                             />
                         </button>
-                        <p className="max-w-md text-white leading-relaxed mb-8">
-                            The future of flavor is here. No compromises, no headaches, just pure excellence in every can.
-                        </p>
                         <nav className="flex gap-8 mb-10">
-                          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-white hover:text-white/70 transition-colors">Our Story</button>
-                          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-white hover:text-white/70 transition-colors">Our Process</button>
+                          <a href="/privacy-policy" className="text-white hover:text-white/70 transition-colors">Privacy Policy</a>
+                          <a href="/terms-and-conditions" className="text-white hover:text-white/70 transition-colors">Terms & Conditions</a>
                         </nav>
                         <div className="flex space-x-6">
                             <a href="https://www.facebook.com/profile.php?id=61586177761933" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/70 transition-colors"><Facebook /></a>

@@ -7,7 +7,7 @@ const beers = [
   {
     name: 'Way Ahead Pilsner',
     img: '/images/logo/Pilsner wing.png',
-    description: 'Our pilsner echoes the pilsners of our founder\'s native Denmark. The red hearts on the yellow crests are a nod to Denmark\'s coat of arms.',
+    description: '',
     bgColor: '#005a31',
     textColor: 'text-white',
     emoji: '♥',
@@ -16,7 +16,7 @@ const beers = [
   {
     name: 'Way Ahead Hazy IPA',
     img: '/images/logo/IPA wing.png',
-    description: 'Our Hazy IPA was developed with New England style IPAs in mind. The stars are a reference to the American flag.',
+    description: '',
     bgColor: '#6e80a6',
     textColor: 'text-white',
     emoji: '★',
@@ -139,12 +139,6 @@ const Story: React.FC = () => {
                 </p>
                 <p>
                   So, we changed the Haxthausen family crest to display hops instead of the family's "wagon gates" for the Way Ahead Brews logo. We then developed specific crests for each of our near-beer products. Each product crest reflects the legacy of that specific beer style. Because each of our products has its own distinct identity grounded in unique, exceptional taste, we believe it deserves its own heraldic crest that conveys that identity and makes it stand out from the crowd.
-                </p>
-                <p>
-                  Our pilsner echoes the pilsners of our founder's native Denmark. The red hearts on the yellow crests are a nod to Denmark's coat of arms.
-                </p>
-                <p>
-                  Our Hazy IPA was developed with New England style IPAs in mind. The stars are a reference to the American flag.
                 </p>
               </div>
             </div>
